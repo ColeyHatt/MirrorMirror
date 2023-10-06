@@ -1,133 +1,107 @@
-# Python program to open the
-# camera in Tkinter
-# Import the libraries,
-# tkinter, cv2, Image and ImageTk
-  
-from tkinter import *
-import cv2
-from PIL import Image, ImageTk
-from subprocess import Popen
+import tkinter as tk
 import os
 import datetime as dt
 import time
-  
-# Define a video capture object
-vid = cv2.VideoCapture(0)
-  
-# Declare the width and height in variables
-width, height = 800, 500
-  
-# Set the width and height
-vid.set(cv2.CAP_PROP_FRAME_WIDTH, width)
-vid.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
-  
-# Create a GUI app
-app = Tk()
+import keyboard
+import random
+import tkinterweb
+website = "www.google.com"
+app = tk.Tk()
 app.title("Mirror Mirror")
 app.configure(bg="Black")
 app.attributes('-fullscreen',True)
-# Bind the app with Escape keyboard to
-# quit app whenever pressed
-app.bind('<Escape>', lambda e: app.quit())
-  
-# Create a label and display it on app
-label_widget = Label(app)
-label_widget.pack()
+app.iconbitmap(r"C:\Users\Shweb\Desktop\MirrorMirror\Icons\Logo.ico")
+random = random.randint(1, 6)
+workouts = ["Crunches", "Pushups", "Situps", "Mile Run", "Curls", "Turtles"]
+Name = tk.Label(app, text="Mirror Mirror", font="20", bg="Black", fg='White')
+Name.pack()
+
+AuthorName = tk.Label(app, text="Coley Hatt © 2023", font="20", bg="Black", fg='White')
+AuthorName.pack(side=tk.BOTTOM)
 
 date = dt.datetime.now()
-# Create Label to display the Date
-label = Label(app, text=f"{date:%A, %B %d, %Y}", font="Calibri, 20", bg="Black", fg='White')
-label.pack(pady=20)
+time = tk.Label(app, text=f"{date:%A, %B %d, %Y}", font="20", bg="Black", fg='White')
+time.pack()
 
-# Create a function to open camera and
-# display it in the label_widget on app
+frame = tkinterweb.HtmlFrame(app, messages_enabled = False)
+frame.load_website(f"{website}")
+frame.pack(side=tk.TOP)
+
+Choice = tk.Label(app, text="HTML Viewer", font="20", bg="Black", fg='White')
+Choice.pack()
+
+
 def AmazonSite():
-    os.system('cmd /c start chrome "https://www.amazon.com" --disable-session-crashed-bubble --start-fullscreen')
-    time.sleep(5)
-    Onlyifyouknowhowtokill()
+    os.system(r'cmd /c start chrome "https://www.amazon.com" --disable-session-crashed-bubble --start-fullscreen')
     
-Amazonphoto = PhotoImage(file = r"C:\Users\Shweb\Desktop\Mirror Mirror\Icons\Amazon.png")
+Amazonphoto = tk.PhotoImage(file = r"C:\Users\Shweb\Desktop\MirrorMirror\Icons\Amazon.png")
 Amazonimage = Amazonphoto.subsample(3, 3)
-Amazon = Button(image = Amazonimage, text="Amazon", command = AmazonSite, borderwidth=0, bg="Black")
-Amazon.pack(side=LEFT)
+Amazon = tk.Button(image = Amazonimage, text="Amazon", command = AmazonSite, borderwidth=0, bg="Black")
+Amazon.pack(side=tk.LEFT)
   
 def YoutubeSite():
-    os.system('cmd /c start chrome "https://www.youtube.com" --disable-session-crashed-bubble --start-fullscreen')
-    time.sleep(5)
-    Onlyifyouknowhowtokill()
+    os.system(r'cmd /c start chrome "https://www.youtube.com" --disable-session-crashed-bubble --start-fullscreen')
     
-Youtubephoto = PhotoImage(file = r"C:\Users\Shweb\Desktop\Mirror Mirror\Icons\youtube.png")
+Youtubephoto = tk.PhotoImage(file = r"C:\Users\Shweb\Desktop\MirrorMirror\Icons\youtube.png")
 Youtubeimage = Youtubephoto.subsample(3, 3)
-Youtube = Button(image = Youtubeimage, text="Youtube", command = YoutubeSite, borderwidth=0, bg="Black")
-Youtube.pack(side=LEFT)
+Youtube = tk.Button(image = Youtubeimage, text="Youtube", command = YoutubeSite, borderwidth=0, bg="Black")
+Youtube.pack(side=tk.LEFT)
 
 def GmailSite():
-    os.system('cmd /c start chrome "https://www.gmail.com" --disable-session-crashed-bubble --start-fullscreen')
-    time.sleep(5)
-    Onlyifyouknowhowtokill()
+    os.system(r'cmd /c start chrome "https://www.gmail.com" --disable-session-crashed-bubble --start-fullscreen')
     
-Gmailphoto = PhotoImage(file = r"C:\Users\Shweb\Desktop\Mirror Mirror\Icons\gmail.png")
+Gmailphoto = tk.PhotoImage(file = r"C:\Users\Shweb\Desktop\MirrorMirror\Icons\gmail.png")
 Gmailimage = Gmailphoto.subsample(20, 20)
-Gmail = Button(image = Gmailimage, text="Gmail", command = GmailSite, borderwidth=0, bg="Black")
-Gmail.pack(side=LEFT)
+Gmail = tk.Button(image = Gmailimage, text="Gmail", command = GmailSite, borderwidth=0, bg="Black")
+Gmail.pack(side=tk.LEFT)
 
 def FacebookSite():
-    os.system('cmd /c start chrome "https://www.facebook.com" --disable-session-crashed-bubble --start-fullscreen')
-    time.sleep(5)
-    Onlyifyouknowhowtokill()
+    os.system(r'cmd /c start chrome "https://www.facebook.com" --disable-session-crashed-bubble --start-fullscreen')
 
-Facebookphoto = PhotoImage(file = r"C:\Users\Shweb\Desktop\Mirror Mirror\Icons\facebook.png")
+Facebookphoto = tk.PhotoImage(file = r"C:\Users\Shweb\Desktop\MirrorMirror\Icons\facebook.png")
 Facebookimage = Facebookphoto.subsample(12, 12)
-Facebook = Button(image = Facebookimage, text="Facebook", command = FacebookSite, borderwidth=0, bg="Black")
-Facebook.pack(side=LEFT)
+Facebook = tk.Button(image = Facebookimage, text="Facebook", command = FacebookSite, borderwidth=0, bg="Black")
+Facebook.pack(side=tk.LEFT)
 
 def SteamApp():
-    os.system('cmd /c start /d "C:\Program Files (x86)\Steam\" Steam.exe /wait /b "steam://open/bigpicture"')
-    time.sleep(5)
-    Onlyifyouknowhowtokill()
+    os.system(r'cmd /c start /d "C:\Program Files (x86)\Steam\" Steam.exe /wait /b "steam://open/bigpicture"')
     
-Steamphoto = PhotoImage(file = r"C:\Users\Shweb\Desktop\Mirror Mirror\Icons\Steam.png")
+Steamphoto = tk.PhotoImage(file = r"C:\Users\Shweb\Desktop\MirrorMirror\Icons\Steam.png")
 Steamimage = Steamphoto.subsample(4, 4)
-Steam = Button(image = Steamimage, text="Steam", command = SteamApp, borderwidth=0, bg="Black")
-Steam.pack(side=LEFT)
+Steam = tk.Button(image = Steamimage, text="Steam", command = SteamApp, borderwidth=0, bg="Black")
+Steam.pack(side=tk.LEFT)
 
-def DiscordApp():
-    os.system('cmd /c start chrome "https://www.discord.com" --disable-session-crashed-bubble --start-fullscreen')
-    time.sleep(5)
-    Onlyifyouknowhowtokill()
+def NotepadApp():
+    os.system(r'cmd /c start /d "C:\Program Files\Notepad++\" notepad++.exe')
     
-Discordphoto = PhotoImage(file = r"C:\Users\Shweb\Desktop\Mirror Mirror\Icons\discord.png")
+    
+Notepadphoto = tk.PhotoImage(file = r"C:\Users\Shweb\Desktop\MirrorMirror\Icons\Notepad++.png")
+Notepadimage = Notepadphoto.subsample(4, 4)
+Notepad = tk.Button(image = Notepadimage, text="Notepad", command = NotepadApp, borderwidth=0, bg="Black")
+Notepad.pack(side=tk.LEFT)
+
+def DiscordSite():
+    os.system(r'cmd /c start chrome "https://www.discord.com" --disable-session-crashed-bubble --start-fullscreen')
+    
+Discordphoto = tk.PhotoImage(file = r"C:\Users\Shweb\Desktop\MirrorMirror\Icons\discord.png")
 Discordimage = Discordphoto.subsample(10, 10)
-Discord = Button(image = Discordimage, text="Discord", command = DiscordApp, borderwidth=0, bg="Black")
-Discord.pack(side=LEFT)
+Discord = tk.Button(image = Discordimage, text="Discord", command = DiscordSite, borderwidth=0, bg="Black")
+Discord.pack(side=tk.LEFT)
 
-def Onlyifyouknowhowtokill():
-    os.system(r'cmd /c start /d "C:\Users\Shweb\Desktop\Mirror Mirror" MirrorMirrorCheck.vbs')
-    time.sleep(3600)
-        
-def open_camera():
-  
-    # Capture the video frame by frame
-    _, frame = vid.read()
-  
-    # Convert image from one color space to other
-    opencv_image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
-  
-    # Capture the latest frame and transform to image
-    captured_image = Image.fromarray(opencv_image)
-  
-    # Convert captured image to photoimage
-    photo_image = ImageTk.PhotoImage(image=captured_image)
-  
-    # Displaying photoimage in the label
-    label_widget.photo_image = photo_image
-  
-    # Configure image in the label
-    label_widget.configure(image=photo_image)
-  
-    # Repeat the same process after every 10 seconds
-    label_widget.after(10, open_camera)
-    
+os.system(r'cmd /c start "C:\Windows\System32" osk.exe')
 
-open_camera()
+def die():
+    os.system(r'cmd /c start /d "C:\Users\Shweb\Desktop\MirrorMirror\" MirrorMirrorCheck.vbs')
+
+def Workout():
+   top= Toplevel(app)
+   top.geometry("750x250")
+   top.title(f"Workouts")
+   Label(top, text= f"{workouts[random]}", font=('Mistral 18 bold')).place(x=150,y=80)
+
+Workout = tk.Button(text="Workout", command = Workout, bg="Black")
+Workout.pack(side=tk.LEFT)
+
+keyboard.on_press_key("`", lambda _:die())
+app.bind('<Home>', lambda e: quit())
 app.mainloop()
